@@ -1,5 +1,5 @@
-function Component(props){
-    return <h1>Component Name</h1>
+function Index(props){
+    return <h1>Component Name (Index)</h1>
 }
 
-export default Component
+export default Index
