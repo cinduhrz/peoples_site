@@ -19,6 +19,10 @@ function Show(props){
                 <input type="input" name="title" placeholder="person's title" defaultValue={person.title}/>
                 <input type="submit" value={`update ${person.name}`} />
             </Form>
+
+            <Form action={`/delete/${person._id}`} method="POST">
+                <input type="submit" value={`delete ${person.name}`} />
+            </Form>
         </div>
     </>)
 }
