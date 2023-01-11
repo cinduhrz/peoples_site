@@ -12,13 +12,13 @@ function Show(props){
             <img src={person.img} alt={person.name} />
 
             <h2>Update {person.name}</h2>
-            <Form action={`/update/${person._id}`}>
-                <input type="input" name="name" placeholder="person's name" value={person.name}/>
-                <input type="input" name="image" placeholder="person's image" value={person.image}/>
-                <input type="input" name="title" placeholder="person's title" value={person.title}/>
+            {/* every form element NEEDS A METHOD ATTRIBUTE (put POST even if its put or delete, that you put in the action function later) */}
+            <Form action={`/update/${person._id}`} method="POST">
+                <input type="input" name="name" placeholder="person's name" defaultValue={person.name}/>
+                <input type="input" name="image" placeholder="person's image" defaultValue={person.image}/>
+                <input type="input" name="title" placeholder="person's title" defaultValue={person.title}/>
                 <input type="submit" value={`update ${person.name}`} />
             </Form>
-
         </div>
     </>)
 }

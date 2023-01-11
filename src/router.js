@@ -10,6 +10,7 @@ import { peopleLoader } from './loaders'
 import { personLoader } from './loaders'
 import { createAction } from './actions'
 import { updateAction } from './actions'
+import { deleteAction } from './actions'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,7 +25,7 @@ const router = createBrowserRouter(
                 element={<Show/>}/>
             <Route path="create" action={createAction}/>
             <Route path="update/:id" action={updateAction}/>
-            <Route path="delete/:id" />
+            <Route path="delete/:id" action={deleteAction}/>
         </Route>
     )
 )

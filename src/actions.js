@@ -32,19 +32,36 @@ export const createAction = async({request}) => {
 // 1) request object from the form
 // 2) params object from the url to specify which person to update
 export const updateAction = async ({request, params}) => {
+    // get data from form
     const formData = await request.formData()
+    console.log(formData)
+
+    // setup updated person
     const updatedPerson = {
         name: formData.get("name"),
         image: formData.get("image"),
         title: formData.get("title")
     }
 
+    console.log(updatedPerson)
+
+    // send updated person to our API
     await fetch(URL + `/people/${params.id}`, {
-        method: 'put',
+        method: "PUT",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(updatedPerson)
+    })
+
+    return redirect("/")
+}
+
+// no request body so you dont need request obj
+// but need params to know which obj to delete (params.id)
+export const deleteAction = async ({params}) => {
+    await fetch(URL + `/people/${params.id}`, {
+        method: "delete"
     })
 
     return redirect("/")
