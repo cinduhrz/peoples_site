@@ -27,3 +27,25 @@ export const createAction = async({request}) => {
     // redirect to index
     return redirect("/")
 }
+
+// update has two arguments:
+// 1) request object from the form
+// 2) params object from the url to specify which person to update
+export const updateAction = async ({request, params}) => {
+    const formData = await request.formData()
+    const updatedPerson = {
+        name: formData.get("name"),
+        image: formData.get("image"),
+        title: formData.get("title")
+    }
+
+    await fetch(URL + `/people/${params.id}`, {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedPerson)
+    })
+
+    return redirect("/")
+}
