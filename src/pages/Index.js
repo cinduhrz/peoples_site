@@ -16,20 +16,21 @@ function Index(props){
             </Form>
 
             <h2>People</h2>
+            <div className="container">
+                {people.map(person => (
+                    <div className="card" key={`${person._id}`}>
+                        <Link to={`${person._id}`} className="person">
+                            <h1>
+                                {person.name}
+                            </h1>
+                        </Link>
 
-            {people.map(person => (
-                <div>
-                    <Link to={`${person._id}`} className="person">
-                        <h1>
-                            {person.name}
-                        </h1>
-                    </Link>
+                        <img src={person.image} alt={person.name}/>
 
-                    <img src={person.image} alt={person.name}/>
-
-                    <h3>{person.title}</h3>
-                </div>
-            ))}
+                        <h3>{person.title}</h3>
+                    </div>
+                ))}
+            </div>
         </div>
     </>)}
 
